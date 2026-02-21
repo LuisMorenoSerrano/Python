@@ -4,35 +4,64 @@
   "enabledLanguageIds": [
     "python"
   ],
-  
   // Custom dictionary words
   "words": [
-    "getchlib",
-    "matplotlib",
-    "pyplot",
-    "numpy",
-    "itertools",
-    "whitesmoke",
-    "xlim",
-    "ylim",
-    "figwidth",
-    "figheight",
-    "facecolor",
-    "linestyle",
-    "zorder",
-    "meshgrid",
-    "viridis",
+    "ALPH",
     "arcoscubicos",
-    "conturpy",
-    "lpthw",
-    "tobera",
-    "cycol",
-    "getkey",
+    "Astar",
+    "autoscale",
+    "axisymmetric",
     "bgrcmy",
+    "BLAS",
+    "BMACH",
+    "CONTUR",
+    "conturpy",
+    "cycol",
     "dashdot",
-    "autoscale"
+    "dgemm",
+    "ETAD",
+    "facecolor",
+    "figheight",
+    "figwidth",
+    "findent",
+    "FMACH",
+    "fortls",
+    "getchlib",
+    "getcwd",
+    "getkey",
+    "gfortran",
+    "itertools",
+    "LAPACK",
+    "libblas",
+    "liblapack",
+    "libopenblas",
+    "linestyle",
+    "lopenblas",
+    "lpthw",
+    "matplotlib",
+    "meshgrid",
+    "Mult",
+    "NODO",
+    "NOUP",
+    "NPCT",
+    "numpy",
+    "pyplot",
+    "seaborn",
+    "Sivells",
+    "streamwise",
+    "tobera",
+    "viridis",
+    "VISM",
+    "whitesmoke",
+    "XEND",
+    "XINC",
+    "xlim",
+    "XLOW",
+    "XMID",
+    "ylim",
+    "Zavalan",
+    "zorder"
   ],
-  
   // Ignore patterns
   "ignoreRegExpList": [
     "/^\\s*import\\s+.*/gm",
@@ -40,7 +69,6 @@
     "/'[^']*'/g",
     "/\"[^\"]*\"/g"
   ],
-  
   // Language-specific settings for Python
   "languageSettings": [
     {
@@ -52,7 +80,6 @@
       ]
     }
   ],
-  
   // Ignore paths
   "ignorePaths": [
     "**/*.pyc",

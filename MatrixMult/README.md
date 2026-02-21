@@ -1,34 +1,34 @@
 # MatrixMult
 
-Comparación de rendimiento entre multiplicación de matrices usando NumPy y Fortran (BLAS).
+Performance comparison between matrix multiplication using NumPy and Fortran (BLAS).
 
-## Descripción
+## Description
 
-Este proyecto (prueba de concepto) compara el rendimiento de multiplicación de matrices usando dos implementaciones:
+This project (proof of concept) compares the performance of matrix multiplication using two implementations:
 
-1. **NumPy**: Usando la función `numpy.dot()` con matrices optimizadas
-2. **Fortran+BLAS**: Usando una subrutina Fortran que invoca a `dgemm` de BLAS/LAPACK
+1. **NumPy**: Using the `numpy.dot()` function with optimized arrays
+2. **Fortran+BLAS**: Using a Fortran subroutine that invokes `dgemm` from BLAS/LAPACK
 
-El objetivo es evaluar las diferencias de rendimiento entre ambos enfoques para matrices grandes, verificando además la precisión de los resultados.
+The goal is to evaluate the performance differences between both approaches for large matrices, while also verifying the accuracy of the results.
 
-## Estructura del proyecto
+## Project structure
 
 ```bash
 MatrixMult/
-├── config.py             # Configuración global
-├── main.py               # Programa principal
-├── matrix_info.py        # Funciones para mostrar información de matrices
-├── matrix_mod.f90        # Implementación Fortran con BLAS
-├── matrix_operations.py  # Operaciones con matrices
-├── result_analysis.py    # Análisis de resultados
-└── utils.py              # Funciones de utilidad
+├── config.py             # Global configuration
+├── main.py               # Main program
+├── matrix_info.py        # Functions to display matrix information
+├── matrix_mod.f90        # Fortran implementation with BLAS
+├── matrix_operations.py  # Matrix operations
+├── result_analysis.py    # Result analysis
+└── utils.py              # Utility functions
 ```
 
-## Requisitos
+## Requirements
 
-### Entorno de desarrollo recomendado
+### Recommended development environment
 
-Para trabajar con este proyecto, se recomienda un entorno completo que incluya Python (`>=v3.12`) y los paquetes:
+To work with this project, a complete environment including Python (`>=v3.12`) and the following packages is recommended:
 
 ```bash
 numpy>=2.2.5
@@ -39,107 +39,107 @@ pandas>=2.2.3
 seaborn>=0.13.2
 ```
 
-### Bibliotecas del sistema
+### System libraries
 
-- **BLAS/LAPACK**: Bibliotecas de álgebra lineal optimizadas
-- **gfortran**: Compilador Fortran para compilar el módulo Fortran
+- **BLAS/LAPACK**: Optimized linear algebra libraries
+- **gfortran**: Fortran compiler to compile the Fortran module
 
-En sistemas basados en Ubuntu, puedes instalar las dependencias con:
+On Ubuntu-based systems, you can install dependencies with:
 
 ```bash
 sudo apt-get install python3-numpy gfortran libblas-dev liblapack-dev
 ```
 
-O para usar una implementación optimizada:
+Or to use an optimized implementation:
 
 ```bash
 sudo apt-get install python3-numpy gfortran libopenblas-dev
 ```
 
-## Recomendaciones para VS Code
+## VS Code recommendations
 
-Si utilizas Visual Studio Code para el desarrollo, se recomienda instalar la extensión **Modern Fortran** para obtener:
+If you use Visual Studio Code for development, it is recommended to install the **Modern Fortran** extension to get:
 
-1. Resaltado de sintaxis para código Fortran
-2. Autocompletado y navegación de código
-3. Diagnósticos y análisis de código
-4. Integración con herramientas como fortls
+1. Syntax highlighting for Fortran code
+2. Code autocompletion and navigation
+3. Code diagnostics and analysis
+4. Integration with tools like fortls
 
-Puedes instalar la extensión desde `Quick Open` (Ctrl+P) y el siguiente comando:
+You can install the extension from `Quick Open` (Ctrl+P) with the following command:
 
 ```bash
 ext install fortran-lang.linter-gfortran
 ```
 
-Para mejorar aún más la experiencia de desarrollo, instala las siguientes herramientas complementarias:
+To further improve the development experience, install the following complementary tools:
 
 ```bash
 pip install fortls findent
 ```
 
-## Compilación
+## Compilation
 
-Para compilar el módulo Fortran, ejecuta:
+To compile the Fortran module, run:
 
 ```bash
 f2py -m matrix_ops -c matrix_mod.f90 --f90flags="-O3 -march=native" -lopenblas
 ```
 
-## Uso
+## Usage
 
-Para ejecutar la comparación con el tamaño de matriz predeterminado:
+To run the comparison with the default matrix size:
 
 ```bash
 python main.py
 ```
 
-### Argumentos
+### Arguments
 
-- `-n, --size`: Dimensión de las matrices cuadradas (por defecto: 500)
-- `-v, --verbose`: Muestra información detallada de las matrices
-- `-c, --compare`: Compara los resultados de NumPy y Fortran para verificar su correctitud
+- `-n, --size`: Dimension of the square matrices (default: 500)
+- `-v, --verbose`: Display detailed matrix information
+- `-c, --compare`: Compare NumPy and Fortran results to verify correctness
 
-Ejemplos:
+Examples:
 
 ```bash
-# Usar matrices 1000x1000
+# Use 1000x1000 matrices
 python main.py -n 1000
 
-# Mostrar información detallada
+# Display detailed information
 python main.py -v
 
-# Verificar también la precisión de los resultados
+# Also verify result accuracy
 python main.py -c
 
-# Combinación de argumentos
+# Combination of arguments
 python main.py -n 2000 -v -c
 ```
 
-## Detalles técnicos
+## Technical details
 
-La implementación de Fortran utiliza la rutina `dgemm` de BLAS para la multiplicación de matrices,
-que está altamente optimizada para el hardware subyacente. Por otro lado, NumPy también utiliza
-implementaciones optimizadas internamente.
+The Fortran implementation uses the `dgemm` routine from BLAS for matrix multiplication,
+which is highly optimized for the underlying hardware. On the other hand, NumPy also uses
+internally optimized implementations.
 
-El código está diseñado para:
+The code is designed to:
 
-- Crear matrices en los formatos adecuados para cada implementación (orden C para NumPy, orden F para Fortran)
-- Preasignar matrices de resultado para evitar asignaciones de memoria durante los cálculos
-- Medir con precisión el tiempo de ejecución
-- Proporcionar información detallada sobre las matrices y el uso de memoria
-- Comparar resultados para verificar la precisión numérica
+- Create matrices in the appropriate formats for each implementation (C-order for NumPy, F-order for Fortran)
+- Pre-allocate result matrices to avoid memory allocations during computations
+- Accurately measure execution time
+- Provide detailed information about matrices and memory usage
+- Compare results to verify numerical accuracy
 
-## Rendimiento
+## Performance
 
-El rendimiento relativo entre NumPy y Fortran puede variar significativamente dependiendo de:
+The relative performance between NumPy and Fortran can vary significantly depending on:
 
-- El tamaño de las matrices
-- La implementación de BLAS utilizada
-- La arquitectura del CPU
-- La cantidad de memoria disponible
+- Matrix size
+- BLAS implementation used
+- CPU architecture
+- Amount of available memory
 
-En general, para matrices muy grandes, la implementación con Fortran+BLAS tiende a ser competitiva o superar a NumPy, especialmente cuando se usa una implementación optimizada como OpenBLAS o Intel MKL.
+In general, for very large matrices, the Fortran+BLAS implementation tends to be competitive or outperform NumPy, especially when using an optimized implementation like OpenBLAS or Intel MKL.
 
-## Licencia
+## License
 
-Este proyecto se distribuye bajo la licencia MIT.
+This project is distributed under the MIT license.
