@@ -1,0 +1,64 @@
+{
+  "version": "0.2",
+  "language": "en",
+  "enabledLanguageIds": [
+    "python"
+  ],
+  
+  // Custom dictionary words
+  "words": [
+    "getchlib",
+    "matplotlib",
+    "pyplot",
+    "numpy",
+    "itertools",
+    "whitesmoke",
+    "xlim",
+    "ylim",
+    "figwidth",
+    "figheight",
+    "facecolor",
+    "linestyle",
+    "zorder",
+    "meshgrid",
+    "viridis",
+    "arcoscubicos",
+    "conturpy",
+    "lpthw",
+    "tobera",
+    "cycol",
+    "getkey",
+    "bgrcmy",
+    "dashdot",
+    "autoscale"
+  ],
+  
+  // Ignore patterns
+  "ignoreRegExpList": [
+    "/^\\s*import\\s+.*/gm",
+    "/^\\s*from\\s+.*/gm",
+    "/'[^']*'/g",
+    "/\"[^\"]*\"/g"
+  ],
+  
+  // Language-specific settings for Python
+  "languageSettings": [
+    {
+      "languageId": "python",
+      "includeRegExpList": [
+        "/#.*/g",
+        "/'''[\\s\\S]*'''/g",
+        "/\"\"\"[\\s\\S]*\"\"\"/g"
+      ]
+    }
+  ],
+  
+  // Ignore paths
+  "ignorePaths": [
+    "**/*.pyc",
+    "**/__pycache__/**",
+    "**/node_modules/**",
+    "**/.git/**",
+    "**/*.min.*"
+  ]
+}

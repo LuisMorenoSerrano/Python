@@ -1,0 +1,9 @@
+# Archivos compilados de Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Módulo compilado Fortran
+*.mod
+*.o
+*.obj

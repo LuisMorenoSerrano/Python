@@ -1,0 +1,3 @@
+v.0 - Evolución temporal
+v.1 - Término no lineal
+v.2 - Stencil
